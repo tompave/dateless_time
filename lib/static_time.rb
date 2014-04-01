@@ -20,8 +20,8 @@ class StaticTime
 
 
   def to_time(base = Time.now)
-    @time_value ||= Time.local(base.year, base.month, base.day,
-                                @hours, @minutes, @seconds)
+    @time_value ||= Time.new(base.year, base.month, base.day,
+                        @hours, @minutes, @seconds, base.utc_offset)
   rescue
     nil
   end

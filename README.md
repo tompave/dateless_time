@@ -13,6 +13,8 @@ Things become even messier when working with a framework (Rails) that handles th
 
 This gem aims to fix this.  
 Drawing inspirations from the Unix time format, it stores static time values as the number of seconds since midnight.  
+It generates static and date-independent time values, that don't care about timezones or DST.
+
 As easy as pie.
 
 
@@ -63,8 +65,13 @@ time.seconds_since_midnight
 time.to_i
 # => 49062
 
+# this uses Time.now to fill the date-related bits
 time.to_time
 # => 2014-04-01 13:37:42 +0100
+
+# but you can supply a base time object instead
+t.to_time(Time.new(1985, 10, 25, 0, 0, 0, "-08:00"))
+# => 1985-10-25 13:37:42 +0800
 
 time.to_time.class
 # => Time
@@ -77,6 +84,7 @@ time.to_h
 
 time.to_a
 # => [13, 37, 42]
+
 
 ```
 
