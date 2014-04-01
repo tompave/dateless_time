@@ -9,11 +9,11 @@ There are a number of use cases where we need a simple and dumb time value. Thin
 In these situations the time doesn't need to be bound to a date.  
 It doesn't need to be adjusted to the user's timezone either, and it surely doesn't need to be pushed forward or backwards because of the dailight saving time.
 
-Things become even messier when working with a framework (Rails) that handles these adjustemnts automatically.  
+Things become even messier when working with a framework (Rails) that handles these adjustments automatically.  
 
 This gem aims to fix this.  
 Drawing inspirations from the Unix time format, it stores static time values as the number of seconds since midnight.  
-Easy as pie.
+As easy as pie.
 
 
 ## How
@@ -119,7 +119,7 @@ end
 1. tests (the gem is not production ready)
 2. implement `strftime`
 3. include and support `Comparable` ([ruby doc](http://ruby-doc.org/core-2.1.0/Comparable.html))
-4. implement the `+` and `-` artimetic operators, in way consistent with Ruby's `Time`
+4. implement the `+` and `-` artimetic operators, in a way consistent with Ruby's `Time`
 5. nice to have: other methods from `Time`'s public interface
 6. ActiveRecord integration (maybe), in the form of migration helpers and `ActiveRecord::Base` class methods to declare `StaticTime` fields.
 
