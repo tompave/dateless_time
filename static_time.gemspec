@@ -6,7 +6,7 @@ require 'static_time/version'
 Gem::Specification.new do |spec|
   spec.name          = "static_time"
   spec.version       = StaticTime::VERSION
-  spec.authors       = ["tom"]
+  spec.authors       = ["tompave"]
   spec.email         = ["tommaso@pavese.me"]
   spec.description   = %q{TODO: Write a gem description}
   spec.summary       = %q{TODO: Write a gem summary}
