@@ -7,11 +7,10 @@ require "static_time"
 Gem::Specification.new do |spec|
   spec.name          = "static_time"
   spec.version       = StaticTime::VERSION
-  spec.authors       = ["tompave"]
-  spec.email         = ["tommaso@pavese.me"]
+  spec.author        = "Tommaso Pavese"
   spec.description   = %q{TODO: Write a gem description}
   spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/tompave/static_time"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -20,5 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rake", '~> 10.0'
+
+  spec.add_development_dependency 'minitest', '~> 5.3.1'
 end

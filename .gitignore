@@ -15,4 +15,8 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+
+# OSX
+.Spotlight-V100
 .DS_Store
+.Trashes
