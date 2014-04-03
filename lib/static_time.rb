@@ -3,6 +3,9 @@ require "static_time/version"
 class StaticTime
 
   SECONDS_IN_24_HOURS = 86400
+  MAX_HOURS = 24
+  MAX_MINUTES = 60
+  MAX_SECONDS = 60
   #TIME_STRING_REGEX = /\A((([01]?\d|2[0-3]):[0-5]\d)|((0?\d|1[0-2]):[0-5]\d)\s?(am|pm))\z/i
 
   attr_reader :hours, :minutes, :seconds
@@ -128,6 +131,10 @@ private
 
 end
 
+
+
 class StaticTime::InitializationError < StandardError
 end
 
+class StaticTime::TimeOutOfRangeError < StandardError
+end
