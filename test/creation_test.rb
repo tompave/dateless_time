@@ -67,14 +67,61 @@ class CreationTest < Minitest::Test
 
 
   def test_create_with_bad_numerical_string
-    assert_raises StaticTime::TimeOutOfRangeError do
+    assert_raises StaticTime::InitializationError do
       @st_time = StaticTime.new "1000"
     end
   end
 
+
   def test_create_with_empty_string
     assert_raises StaticTime::InitializationError do
       @st_time = StaticTime.new("")
+    end
+  end
+
+
+  def test_create_with_string_with_am
+    @st_time = StaticTime.new "10:13:14 am"
+  
+    assert_equal 10, @st_time.hours
+    assert_equal 13, @st_time.minutes
+    assert_equal 14, @st_time.seconds
+    assert_equal (14 + (13 * 60) + (10 * 60 * 60)), @st_time.to_i
+
+    @st_time = StaticTime.new "10:13AM"
+  
+    assert_equal 10, @st_time.hours
+    assert_equal 13, @st_time.minutes
+    assert_equal 0, @st_time.seconds
+    assert_equal ((13 * 60) + (10 * 60 * 60)), @st_time.to_i
+  end
+
+
+  def test_create_with_string_with_pm
+    @st_time = StaticTime.new "10:13:14 pm"
+  
+    assert_equal 22, @st_time.hours
+    assert_equal 13, @st_time.minutes
+    assert_equal 14, @st_time.seconds
+    assert_equal (14 + (13 * 60) + (22 * 60 * 60)), @st_time.to_i
+
+    @st_time = StaticTime.new "10:13PM"
+  
+    assert_equal 22, @st_time.hours
+    assert_equal 13, @st_time.minutes
+    assert_equal 0, @st_time.seconds
+    assert_equal ((13 * 60) + (22 * 60 * 60)), @st_time.to_i
+  end
+
+
+
+  def test_create_with_string_with_nonsensical_pm
+    assert_raises StaticTime::TimeOutOfRangeError do
+      @st_time = StaticTime.new "15:13:14 pm"
+    end
+  
+    assert_raises StaticTime::TimeOutOfRangeError do
+      @st_time = StaticTime.new "13:13PM"
     end
   end
 
@@ -209,6 +256,22 @@ class CreationTest < Minitest::Test
       @st_time = StaticTime.new([])
     end
   end
+
+
+  def test_create_with_array_with_bad_data
+    assert_raises StaticTime::TimeOutOfRangeError do
+      @st_time = StaticTime.new([25, 10, 11])
+    end
+
+    assert_raises StaticTime::TimeOutOfRangeError do
+      @st_time = StaticTime.new([11, 67, 11])
+    end
+
+    assert_raises StaticTime::TimeOutOfRangeError do
+      @st_time = StaticTime.new([9, 10, 100])
+    end
+  end
+
 
 
   def test_create_without_argument

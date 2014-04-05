@@ -3,10 +3,17 @@ require "static_time/version"
 class StaticTime
 
   SECONDS_IN_24_HOURS = 86400
+
   MAX_HOURS = 24
-  MAX_MINUTES = 60
-  MAX_SECONDS = 60
-  #TIME_STRING_REGEX = /\A((([01]?\d|2[0-3]):[0-5]\d)|((0?\d|1[0-2]):[0-5]\d)\s?(am|pm))\z/i
+  MAX_MINUTES = 59
+  MAX_SECONDS = 59
+  
+  TIME_STRING_REGEX = /\A\d{1,2}(:\d{2})?(:\d{2})?( ?(am|pm))?\z/i
+  AM_PM_REGEX = /( )?(am|pm)\z/i
+
+  SPRINTF_FORMAT = "%02d:%02d:%02d".freeze
+
+
 
   attr_reader :hours, :minutes, :seconds
   
@@ -31,7 +38,7 @@ class StaticTime
 
 
   def to_s
-    @string_value ||= sprintf("%02d:%02d:%02d", @hours, @minutes, @seconds)
+    @string_value ||= sprintf(SPRINTF_FORMAT, @hours, @minutes, @seconds)
   rescue
     nil
   end
@@ -78,7 +85,9 @@ private
 
 
   def init_with_string(string)
-    init_with_array string.split(":").map(&:to_i)
+    validate_time_string string
+    data = time_string_to_array string
+    init_with_array data
   end
 
 
@@ -98,6 +107,7 @@ private
 
 
   def init_with_array(array)
+    validate_time_array array
     @hours   = array[0]
     @minutes = array[1] || 0
     @seconds = array[2] || 0
@@ -126,6 +136,40 @@ private
       @hours, @minutes = cache.divmod(60)
     else
       nil
+    end
+  end
+
+
+  def validate_time_string(str)
+    unless TIME_STRING_REGEX =~ str
+      raise StaticTime::InitializationError, "bad string format"
+    end
+  end
+
+
+  # COLON = ":".freeze
+  # EMPTY = "".freeze
+  # PM = "pm".freeze
+
+  def time_string_to_array(str)
+    am_pm = false
+
+    if AM_PM_REGEX =~ str
+      am_pm = str[-2,2].downcase
+      str.sub!(AM_PM_REGEX, '')
+    end
+
+    ary = str.split(":").map(&:to_i)
+    ary[0] += 12 if (am_pm && am_pm == 'pm')
+    ary
+  end
+
+
+  def validate_time_array(ary)
+    if ary.empty?
+      raise StaticTime::InitializationError
+    elsif ary[0] > MAX_HOURS || (ary[1] && ary[1] > MAX_MINUTES) || (ary[2] && ary[2] > MAX_SECONDS)
+      raise StaticTime::TimeOutOfRangeError
     end
   end
 
