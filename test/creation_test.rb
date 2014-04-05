@@ -16,7 +16,7 @@ class CreationTest < Minitest::Test
 
 
   def test_create_with_time
-    @time = Time.parse "13:37:42"
+    @time = Time.new 2014, 1, 1, 13, 37, 42
     @st_time = StaticTime.new @time
 
     assert_equal 13, @st_time.hours
