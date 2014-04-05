@@ -106,7 +106,7 @@ Or install it yourself as:
 
 ## Integration with Rails
 
-The main goal is to keep this gem as small and lightweight as possible, thus I'm not planning to add any any specific support for rails.  
+The main goal is to keep this gem as small and lightweight as possible, thus I'm not planning to add any specific support for rails.  
 
 This doesn't mean that it can't be used with Rais, though!  
 Just choose how to store time values in you DB (time-only SQL values or seconds since midnight, for example), and use them to instantiate `StaticTime` objects rather than Ruby's default `Time`.
