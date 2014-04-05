@@ -71,7 +71,7 @@ time.to_time
 
 # but you can supply a base time object instead
 t.to_time(Time.new(1985, 10, 25, 0, 0, 0, "-08:00"))
-# => 1985-10-25 13:37:42 +0800
+# => 1985-10-25 13:37:42 -0800
 
 time.to_time.class
 # => Time
@@ -106,8 +106,10 @@ Or install it yourself as:
 
 ## Integration with Rails
 
-Good question.
-I'm saving the time (as number of seconds) in an INT column, and then parsing it.  
+The main goal is to keep this gem as small and lightweight as possible, thus I'm not planning to add any any specific support for rails.  
+
+This doesn't mean that it can't be used with Rais, though!  
+Just choose how to store time values in you DB (time-only SQL values or seconds since midnight, for example), and use them to instantiate `StaticTime` objects rather than Ruby's default `Time`.
 
 For example:
 
@@ -124,13 +126,10 @@ end
 
 ## To Do
 
-1. tests (the gem is not production ready)
-2. implement `strftime`
-3. include and support `Comparable` ([ruby doc](http://ruby-doc.org/core-2.1.0/Comparable.html))
-4. implement the `+` and `-` artimetic operators, in a way consistent with Ruby's `Time`
-5. nice to have: other methods from `Time`'s public interface
-6. ActiveRecord integration (maybe), in the form of migration helpers and `ActiveRecord::Base` class methods to declare `StaticTime` fields.
-
+1. implement `strftime`
+2. include and support `Comparable` ([ruby doc](http://ruby-doc.org/core-2.1.0/Comparable.html))
+3. implement the `+` and `-` artimetic operators, in a way consistent with Ruby's `Time`
+4. nice to have: other methods from `Time`'s public interface
 
 
 
