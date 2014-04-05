@@ -18,6 +18,20 @@ It generates static and date-independent time values, that don't care about time
 As easy as pie.
 
 
+## Dependencies
+
+None. No external gems, nothing from the stdlib either.
+
+
+## Rubies
+
+Tested with:
+
+* MRI `1.9.3`, `2.0.0`, `2.1.0` and `2.1.1`
+* Rubinius `2.2.4`
+* JRuby `1.7.10`
+
+
 ## How
 
 
