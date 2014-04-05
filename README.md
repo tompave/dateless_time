@@ -1,4 +1,4 @@
-# StaticTime
+# DatelessTime
 
 A class to handle __dateless time values__.  
 
@@ -38,34 +38,34 @@ Tested with:
 Creation:
 
 ```ruby
-require 'static_time'
+require 'dateless_time'
 
-# you can create a StaticTime object with a shortcut
-time = StaticTime.now
+# you can create a DatelessTime object with a shortcut
+time = DatelessTime.now
 
 # or a Time object
-time = StaticTime.new Time.now
+time = DatelessTime.new Time.now
 
 # or a String (minutes and seconds are optional)
-time = StaticTime.new "13:37:00"
+time = DatelessTime.new "13:37:00"
 
 # or the number of seconds since midnight
-time = StaticTime.new 49020
+time = DatelessTime.new 49020
 
 # or a Hash (minutes and seconds are optional)
-time = StaticTime.new hours: 13, minutes: 37, seconds: 0
+time = DatelessTime.new hours: 13, minutes: 37, seconds: 0
 
 # or an Array (minutes and seconds are optional)
-time = StaticTime.new [13, 37, 0]
+time = DatelessTime.new [13, 37, 0]
 
 ```
 
 Interface:
 
 ```ruby
-require 'static_time'
+require 'dateless_time'
 
-time = StaticTime.new "13:37:42"
+time = DatelessTime.new "13:37:42"
 
 time.hours
 #=> 13
@@ -108,7 +108,7 @@ time.to_a
 
 Add this line to your application's Gemfile:
 
-    gem 'static_time'
+    gem 'dateless_time'
 
 And then execute:
 
@@ -116,7 +116,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install static_time
+    $ gem install dateless_time
 
 
 
@@ -125,7 +125,7 @@ Or install it yourself as:
 The main goal is to keep this gem as small and lightweight as possible, thus I'm not planning to add any specific support for rails.  
 
 This doesn't mean that it can't be used with Rais, though!  
-Just choose how to store time values in you DB (time-only SQL values or seconds since midnight, for example), and use them to instantiate `StaticTime` objects rather than Ruby's default `Time`.
+Just choose how to store time values in you DB (time-only SQL values or seconds since midnight, for example), and use them to instantiate `DatelessTime` objects rather than Ruby's default `Time`.
 
 For example:
 
@@ -134,7 +134,7 @@ For example:
 # opening_time_seconds is an INT value from the DB
 
 def opening_time
-  @opening_time ||= StaticTime.new opening_time_seconds
+  @opening_time ||= DatelessTime.new opening_time_seconds
 end
 
 ```

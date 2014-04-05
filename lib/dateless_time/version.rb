@@ -1,3 +1,3 @@
-class StaticTime
+class DatelessTime
   VERSION = "0.0.1"
 end

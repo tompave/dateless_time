@@ -1,4 +1,4 @@
-require "static_time"
+require "dateless_time"
 
 require 'minitest/autorun'
 require 'minitest/pride'

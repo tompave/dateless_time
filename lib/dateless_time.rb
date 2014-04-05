@@ -1,6 +1,6 @@
-require "static_time/version"
+require "dateless_time/version"
 
-class StaticTime
+class DatelessTime
 
   SECONDS_IN_24_HOURS = 86400
 
@@ -79,7 +79,7 @@ private
     when Fixnum then init_with_seconds(source)
     when Hash   then init_with_hash(source)
     when Array  then init_with_array(source)
-    else raise StaticTime::InitializationError
+    else raise DatelessTime::InitializationError
     end
   end
 
@@ -153,7 +153,7 @@ private
 
   def validate_time_string(str)
     unless TIME_STRING_REGEX =~ str
-      raise StaticTime::InitializationError, "bad string format"
+      raise DatelessTime::InitializationError, "bad string format"
     end
   end
 
@@ -178,25 +178,25 @@ private
 
   def validate_time_array(ary)
     if ary.empty?
-      raise StaticTime::InitializationError
+      raise DatelessTime::InitializationError
     elsif ary[0] > MAX_HOURS || (ary[1] && ary[1] > MAX_MINUTES) || (ary[2] && ary[2] > MAX_SECONDS)
-      raise StaticTime::TimeOutOfRangeError
+      raise DatelessTime::TimeOutOfRangeError
     end
   end
 
 
   def validate_time_hash(h)
     if h.empty? || h[:hours].nil?
-      raise StaticTime::InitializationError
+      raise DatelessTime::InitializationError
     elsif h[:hours] > MAX_HOURS || (h[:minutes] && h[:minutes] > MAX_MINUTES) || (h[:seconds] && h[:seconds] > MAX_SECONDS)
-      raise StaticTime::TimeOutOfRangeError
+      raise DatelessTime::TimeOutOfRangeError
     end
   end
 
 
   def validate_seconds_since_midnight(seconds)
     if seconds > SECONDS_IN_24_HOURS
-      raise StaticTime::TimeOutOfRangeError
+      raise DatelessTime::TimeOutOfRangeError
     end
   end
 
@@ -204,8 +204,8 @@ end
 
 
 
-class StaticTime::InitializationError < StandardError
+class DatelessTime::InitializationError < StandardError
 end
 
-class StaticTime::TimeOutOfRangeError < StaticTime::InitializationError
+class DatelessTime::TimeOutOfRangeError < DatelessTime::InitializationError
 end

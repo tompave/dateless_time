@@ -3,7 +3,7 @@ require 'test_helper'
 class QueryTest < Minitest::Test
 
   def setup
-    @st_time = StaticTime.new [13, 37, 42]
+    @st_time = DatelessTime.new [13, 37, 42]
   end
 
 
@@ -33,7 +33,7 @@ class QueryTest < Minitest::Test
 
 
   def test_to_s_with_padding_zeroes
-    @st_time = StaticTime.new [2, 7, 9]
+    @st_time = DatelessTime.new [2, 7, 9]
     assert_equal "02:07:09", @st_time.to_s
   end
 
