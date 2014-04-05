@@ -1,6 +1,6 @@
 # StaticTime
 
-A library to handle __static time values__.  
+A class to handle __dateless time values__.  
 
 ## What
 

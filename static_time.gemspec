@@ -2,14 +2,14 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'static_time/version'
-require "static_time"
+#require "static_time"
 
 Gem::Specification.new do |spec|
   spec.name          = "static_time"
   spec.version       = StaticTime::VERSION
   spec.author        = "Tommaso Pavese"
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{A class to handle dateless time values.}
+  spec.summary       = %q{A class to handle dateless time values. DatelessTime objects are a lightweight alternative Ruby's default Time class, and don't care about timezones and DST.}
   spec.homepage      = "https://github.com/tompave/static_time"
   spec.license       = "MIT"
 
