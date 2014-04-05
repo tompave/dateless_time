@@ -92,7 +92,8 @@ private
 
 
   def init_with_seconds(seconds)
-    seconds = SECONDS_IN_24_HOURS if seconds > SECONDS_IN_24_HOURS
+    validate_seconds_since_midnight seconds
+    #seconds = SECONDS_IN_24_HOURS if seconds > SECONDS_IN_24_HOURS
     @seconds_since_midnight = seconds
     calculate_hours_minutes_and_seconds
   end
@@ -124,6 +125,7 @@ private
       cache =  @seconds
       cache += @minutes * 60
       cache += @hours * 3600
+      validate_seconds_since_midnight cache
       cache
     else
       nil
@@ -183,6 +185,13 @@ private
     end
   end
 
+
+  def validate_seconds_since_midnight(seconds)
+    if seconds > SECONDS_IN_24_HOURS
+      raise StaticTime::TimeOutOfRangeError
+    end
+  end
+
 end
 
 
@@ -190,5 +199,5 @@ end
 class StaticTime::InitializationError < StandardError
 end
 
-class StaticTime::TimeOutOfRangeError < StandardError
+class StaticTime::TimeOutOfRangeError < StaticTime::InitializationError
 end

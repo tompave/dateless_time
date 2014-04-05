@@ -149,6 +149,16 @@ class CreationTest < Minitest::Test
   end
 
 
+  def test_create_with_zero_seconds
+    @st_time = StaticTime.new 0
+
+    assert_equal 0, @st_time.hours
+    assert_equal 0, @st_time.minutes
+    assert_equal 0, @st_time.seconds
+    assert_equal 0, @st_time.to_i
+  end
+
+
   def test_create_with_too_many_seconds
     assert_raises StaticTime::TimeOutOfRangeError do
       @st_time = StaticTime.new(StaticTime::SECONDS_IN_24_HOURS + 1)
