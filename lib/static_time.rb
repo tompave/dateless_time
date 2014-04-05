@@ -99,6 +99,7 @@ private
 
 
   def init_with_hash(hash)
+    validate_time_hash hash
     @hours   = hash[:hours]
     @minutes = hash[:minutes] || 0
     @seconds = hash[:seconds] || 0
@@ -169,6 +170,15 @@ private
     if ary.empty?
       raise StaticTime::InitializationError
     elsif ary[0] > MAX_HOURS || (ary[1] && ary[1] > MAX_MINUTES) || (ary[2] && ary[2] > MAX_SECONDS)
+      raise StaticTime::TimeOutOfRangeError
+    end
+  end
+
+
+  def validate_time_hash(h)
+    if h.empty? || h[:hours].nil?
+      raise StaticTime::InitializationError
+    elsif h[:hours] > MAX_HOURS || (h[:minutes] && h[:minutes] > MAX_MINUTES) || (h[:seconds] && h[:seconds] > MAX_SECONDS)
       raise StaticTime::TimeOutOfRangeError
     end
   end

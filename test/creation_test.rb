@@ -201,6 +201,13 @@ class CreationTest < Minitest::Test
   end
 
 
+  def test_create_with_hash_without_hours_but_other_random_keys
+    assert_raises StaticTime::InitializationError do
+      @st_time = StaticTime.new({ batman: "nananana" })
+    end
+  end
+
+
   def test_create_with_hash_without_seconds_and_minutes
     @st_time = StaticTime.new({ hours: 1 })
 
