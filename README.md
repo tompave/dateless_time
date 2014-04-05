@@ -76,6 +76,9 @@ t.to_time(Time.new(1985, 10, 25, 0, 0, 0, "-08:00"))
 time.to_time.class
 # => Time
 
+time.strftime("%-l:%M %P")
+# => "1:37 pm"
+
 time.to_s
 # => "13:37:42"
 
@@ -84,7 +87,6 @@ time.to_h
 
 time.to_a
 # => [13, 37, 42]
-
 
 ```
 
@@ -126,10 +128,10 @@ end
 
 ## To Do
 
-1. implement `strftime`
-2. include and support `Comparable` ([ruby doc](http://ruby-doc.org/core-2.1.0/Comparable.html))
-3. implement the `+` and `-` artimetic operators, in a way consistent with Ruby's `Time`
-4. nice to have: other methods from `Time`'s public interface
+
+1. include and support `Comparable` ([ruby doc](http://ruby-doc.org/core-2.1.0/Comparable.html))
+2. implement the `+` and `-` artimetic operators, in a way consistent with Ruby's `Time`
+3. nice to have: other methods from `Time`'s public interface
 
 
 

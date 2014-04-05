@@ -78,4 +78,13 @@ class QueryTest < Minitest::Test
   end
 
 
+  def test_strftime
+    assert_equal "13:37", @st_time.strftime("%H:%M")
+    assert_equal "13:37:42", @st_time.strftime("%H:%M:%S")
+    assert_equal "13-37-42", @st_time.strftime("%H-%M-%S")
+
+    assert_equal "1:37 pm", @st_time.strftime("%-l:%M %P")
+  end
+
+
 end

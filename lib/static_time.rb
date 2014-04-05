@@ -61,6 +61,14 @@ class StaticTime
   alias_method :to_i, :seconds_since_midnight
 
 
+  def strftime(template)
+    to_time.strftime(template)
+  rescue
+    nil
+  end
+
+
+
 private
 
 
