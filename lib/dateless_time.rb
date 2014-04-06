@@ -2,6 +2,8 @@ require "dateless_time/version"
 
 class DatelessTime
 
+  include Comparable
+
   SECONDS_IN_24_HOURS = 86400
 
   MAX_HOURS = 24
@@ -65,6 +67,12 @@ class DatelessTime
     to_time.strftime(template)
   rescue
     nil
+  end
+
+
+  def <=>(other)
+    raise TypeError unless other.is_a?(DatelessTime)
+    to_i <=> other.to_i
   end
 
 
