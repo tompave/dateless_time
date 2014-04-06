@@ -109,7 +109,7 @@ Comparisons:
 ```ruby
 
 @time_1 = DatelessTime.new "11:22"
-@time_1 = DatelessTime.new "11:30"
+@time_2 = DatelessTime.new "11:30"
 
 # all the usual suspects
 
