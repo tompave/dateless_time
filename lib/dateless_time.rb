@@ -30,8 +30,8 @@ class DatelessTime
 
 
   def to_time(base = Time.now)
-    @time_value ||= Time.new(base.year, base.month, base.day,
-                        @hours, @minutes, @seconds, base.utc_offset)
+    @time_value = Time.new(base.year, base.month, base.day,
+                      @hours, @minutes, @seconds, base.utc_offset)
   rescue
     nil
   end

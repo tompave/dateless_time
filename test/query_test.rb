@@ -27,6 +27,23 @@ class QueryTest < Minitest::Test
   end
 
 
+  def test_to_time_with_different_bases_should_change
+    @to_time = @dl_time.to_time
+    now = Time.now
+    expected = Time.new(now.year, now.month, now.day, 13, 37, 42, now.utc_offset)
+
+    assert_equal Time, @to_time.class
+    assert_equal expected, @to_time
+
+
+    base = Time.new(1990, 11, 10, 12, 13, 14)
+    @to_time = @dl_time.to_time(base)
+    
+    assert_equal Time, @to_time.class
+    assert_equal Time.new(1990, 11, 10, 13, 37, 42), @to_time
+  end
+
+
   def test_to_s
     assert_equal "13:37:42", @dl_time.to_s
   end
