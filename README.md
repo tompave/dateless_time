@@ -104,6 +104,29 @@ time.to_a
 
 ```
 
+Comparisons:
+
+```ruby
+
+@time_1 = DatelessTime.new "11:22"
+@time_1 = DatelessTime.new "11:30"
+
+# all the usual suspects
+
+@time_1 < @time_2
+# => true
+
+# all the usual suspects
+@time_1 == @time_2
+# => false
+
+@time_2.between? @time_1, DatelessTime.new("20:30")
+# => true
+
+#etc...
+
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -143,9 +166,8 @@ end
 ## To Do
 
 
-1. include and support `Comparable` ([ruby doc](http://ruby-doc.org/core-2.1.0/Comparable.html))
-2. implement the `+` and `-` artimetic operators, in a way consistent with Ruby's `Time`
-3. nice to have: other methods from `Time`'s public interface
+1. implement the `+` and `-` artimetic operators, in a way consistent with Ruby's `Time`
+2. nice to have: other methods from `Time`'s public interface
 
 
 
