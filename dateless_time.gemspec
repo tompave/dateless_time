@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.name          = "dateless_time"
   spec.version       = DatelessTime::VERSION
   spec.author        = "Tommaso Pavese"
-  spec.description   = %q{A class to handle dateless time values.}
-  spec.summary       = %q{A class to handle dateless time values. DatelessTime objects are a lightweight alternative Ruby's default Time class, and don't care about timezones and DST.}
+  spec.description   = %q{A class to handle dateless time values. DatelessTime objects are a lightweight alternative to Ruby's default Time class, and don't care about timezones and DST.}
+  spec.summary       = %q{A class to handle dateless time values.}
   spec.homepage      = "https://github.com/tompave/dateless_time"
   spec.license       = "MIT"
 
