@@ -116,14 +116,19 @@ Comparisons:
 @time_1 < @time_2
 # => true
 
-# all the usual suspects
 @time_1 == @time_2
 # => false
 
 @time_2.between? @time_1, DatelessTime.new("20:30")
 # => true
 
-#etc...
+array = (1..5).map { DatelessTime.new(rand(DatelessTime::SECONDS_IN_24_HOURS)) }
+array.map(&:to_s)
+# => ["06:51:58", "04:50:32", "14:36:53", "21:36:38", "10:17:12"]
+array.sort.map(&:to_s)
+# => ["04:50:32", "06:51:58", "10:17:12", "14:36:53", "21:36:38"]
+
+# etc...
 
 ```
 
