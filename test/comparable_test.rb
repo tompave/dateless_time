@@ -107,4 +107,16 @@ class ComparableTest < Minitest::Test
     refute @t3.between?(@t1, @t2)
   end
 
+
+  def test_sort
+    @t1 = DatelessTime.new "20:45:10"
+    @t2 = DatelessTime.new "13:30:00"
+    @t3 = DatelessTime.new "9:20"
+    @t4 = DatelessTime.new "20:45:11"
+    @array = [@t1, @t2, @t3, @t4]
+
+    refute_equal @array, @array.sort
+    assert_equal [@t3, @t2, @t1, @t4], @array.sort
+  end
+
 end
