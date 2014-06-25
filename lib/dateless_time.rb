@@ -1,4 +1,5 @@
-require "dateless_time/version"
+require 'date'
+require 'dateless_time/version'
 
 class DatelessTime
 

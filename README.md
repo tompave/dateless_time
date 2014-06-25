@@ -21,14 +21,14 @@ As easy as pie.
 ## Dependencies
 
 No external gems.  
-`DateTime` from the stdlib.  
+`date` from the stdlib.  
 
 
 ## Rubies
 
 Tested with:
 
-* MRI `1.9.3`, `2.0.0`, `2.1.0` and `2.1.1`
+* MRI `1.9.3`, `2.0.0`, `2.1.0`, `2.1.1` and `2.1.2`
 * Rubinius `2.2.4`
 * JRuby `1.7.10`
 
