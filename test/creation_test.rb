@@ -125,6 +125,26 @@ class CreationTest < Minitest::Test
     end
   end
 
+
+
+
+  def test_create_with_borderline_am
+    @dl_time = DatelessTime.new "12:13:14 am"
+    assert_equal 0, @dl_time.hours
+    assert_equal 13, @dl_time.minutes
+    assert_equal 14, @dl_time.seconds
+    assert_equal (14 + (13 * 60) + 0), @dl_time.to_i
+  end
+
+
+  def test_create_with_borderline_pm
+    @dl_time = DatelessTime.new "12:13:14 pm"
+    assert_equal 12, @dl_time.hours
+    assert_equal 13, @dl_time.minutes
+    assert_equal 14, @dl_time.seconds
+    assert_equal (14 + (13 * 60) + (12 * 60 * 60)), @dl_time.to_i
+  end
+
   
 
   def test_create_with_seconds

@@ -183,9 +183,24 @@ private
     end
 
     ary = str.split(":").map(&:to_i)
-    ary[0] += 12 if (am_pm && am_pm == 'pm')
+    ary[0] = adjust_for_am_pm(ary[0], am_pm) if am_pm
     ary
   end
+
+
+  def adjust_for_am_pm(hour, am_pm)
+    if am_pm == 'am'
+      if hour == 12
+        hour = 0
+      end
+    elsif am_pm == 'pm'
+      if hour != 12
+        hour += 12
+      end
+    end
+    hour
+  end
+
 
 
   def validate_time_array(ary)
