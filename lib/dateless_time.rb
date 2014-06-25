@@ -90,7 +90,7 @@ private
     when Hash   then init_with_hash(source)
     when Array  then init_with_array(source)
     when DatelessTime then init_with_dateless_time(source)
-    else raise DatelessTime::InitializationError
+    else raise DatelessTime::InitializationError, "DatelessTime objects cannot be initialized with instances of #{source.class}."
     end
   end
 
