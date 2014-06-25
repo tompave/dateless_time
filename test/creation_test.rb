@@ -290,6 +290,17 @@ class CreationTest < Minitest::Test
   end
 
 
+  def test_create_with_other_dateless_time
+    @other = DatelessTime.now
+    @this  = DatelessTime.new(@other)
+
+    assert_equal @other.hours, @this.hours
+    assert_equal @other.minutes, @this.minutes
+    assert_equal @other.seconds, @this.seconds
+    assert_equal @other.to_i, @this.to_i
+  end
+
+
 
   def test_create_without_argument
     @time = Time.now

@@ -87,6 +87,7 @@ private
     when Fixnum then init_with_seconds(source)
     when Hash   then init_with_hash(source)
     when Array  then init_with_array(source)
+    when DatelessTime then init_with_dateless_time(source)
     else raise DatelessTime::InitializationError
     end
   end
@@ -133,6 +134,9 @@ private
   end
 
 
+  def init_with_dateless_time(source)
+    init_with_array([source.hours, source.minutes, source.seconds])
+  end
 
 
 
