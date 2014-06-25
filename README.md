@@ -20,7 +20,8 @@ As easy as pie.
 
 ## Dependencies
 
-None. No external gems, nothing from the stdlib either.
+No external gems.  
+`DateTime` from the stdlib.  
 
 
 ## Rubies
