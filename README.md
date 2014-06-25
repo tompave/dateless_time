@@ -47,6 +47,9 @@ time = DatelessTime.now
 # or a Time object
 time = DatelessTime.new Time.now
 
+# or a DateTime object
+time = DatelessTime.new DateTime.now
+
 # or a String (minutes and seconds are optional)
 time = DatelessTime.new "13:37:00"
 
@@ -58,6 +61,9 @@ time = DatelessTime.new hours: 13, minutes: 37, seconds: 0
 
 # or an Array (minutes and seconds are optional)
 time = DatelessTime.new [13, 37, 0]
+
+# or another DatelessTime object
+time = DatelessTime.new DatelessTime.new('00:42')
 
 ```
 
