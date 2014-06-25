@@ -26,6 +26,17 @@ class CreationTest < Minitest::Test
   end
 
 
+  def test_create_with_datetime
+    @datetime = DateTime.new 2014, 1, 1, 13, 37, 42
+    @dl_time = DatelessTime.new @datetime
+
+    assert_equal 13, @dl_time.hours
+    assert_equal 37, @dl_time.minutes
+    assert_equal 42, @dl_time.seconds
+    assert_equal (42 + (37 * 60) + (13 * 60 * 60)), @dl_time.to_i
+  end
+
+
 
   def test_create_with_string
     @dl_time = DatelessTime.new "12:13:14"
