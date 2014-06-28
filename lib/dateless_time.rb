@@ -83,8 +83,7 @@ private
 
   def conditional_init(source)
     case source
-    when Time   then init_with_time(source)
-    when DateTime then init_with_datetime(source)
+    when Time, DateTime   then init_with_time(source)
     when String then init_with_string(source)
     when Fixnum then init_with_seconds(source)
     when Hash   then init_with_hash(source)
@@ -102,13 +101,6 @@ private
     seconds_since_midnight
   end
 
-
-  def init_with_datetime(datetime)
-    @hours   = datetime.hour
-    @minutes = datetime.min
-    @seconds = datetime.sec
-    seconds_since_midnight
-  end
 
 
   def init_with_string(string)
@@ -145,7 +137,7 @@ private
 
 
   def init_with_dateless_time(source)
-    init_with_array([source.hours, source.minutes, source.seconds])
+    init_with_array(source.to_a)
   end
 
 
