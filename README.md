@@ -75,10 +75,15 @@ require 'dateless_time'
 time = DatelessTime.new "13:37:42"
 
 time.hours
+tome.hour
 #=> 13
+
 time.minutes
+time.min
 #=> 37
+
 time.seconds
+time.sec
 #=> 42
 
 time.seconds_since_midnight
