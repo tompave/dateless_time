@@ -85,12 +85,11 @@ private
 
   def conditional_init(source)
     case source
-    when Time, DateTime   then init_with_time(source)
+    when Time, DateTime, DatelessTime then init_with_time(source)
     when String then init_with_string(source)
     when Fixnum then init_with_seconds(source)
     when Hash   then init_with_hash(source)
     when Array  then init_with_array(source)
-    when DatelessTime then init_with_dateless_time(source)
     else raise DatelessTime::InitializationError, "DatelessTime objects cannot be initialized with instances of #{source.class}."
     end
   end
@@ -135,11 +134,6 @@ private
     @minutes = array[1] || 0
     @seconds = array[2] || 0
     seconds_since_midnight
-  end
-
-
-  def init_with_dateless_time(source)
-    init_with_array(source.to_a)
   end
 
 
