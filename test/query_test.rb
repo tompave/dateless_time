@@ -95,6 +95,25 @@ class QueryTest < Minitest::Test
   end
 
 
+  def test_alias_hour
+    assert @dl_time.respond_to?(:hour)
+    assert_equal 13, @dl_time.hour
+  end
+
+
+  def test_alias_min
+    assert @dl_time.respond_to?(:min)
+    assert_equal 37, @dl_time.min
+  end
+
+
+  def test_alias_sec
+    assert @dl_time.respond_to?(:sec)
+    assert_equal 42, @dl_time.sec
+  end
+
+
+
   def test_strftime
     assert_equal "13:37", @dl_time.strftime("%H:%M")
     assert_equal "13:37:42", @dl_time.strftime("%H:%M:%S")

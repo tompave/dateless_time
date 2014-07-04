@@ -19,7 +19,9 @@ class DatelessTime
 
 
   attr_reader :hours, :minutes, :seconds
-  
+  alias hour hours
+  alias min minutes
+  alias sec seconds
 
   def self.now
     new
