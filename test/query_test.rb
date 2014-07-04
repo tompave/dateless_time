@@ -18,8 +18,17 @@ class QueryTest < Minitest::Test
   end
 
 
-  def test_to_time_with_base
+  def test_to_time_with_time_base
     base = Time.new(1990, 11, 10, 12, 13, 14)
+    @to_time = @dl_time.to_time(base)
+    
+    assert_equal Time, @to_time.class
+    assert_equal Time.new(1990, 11, 10, 13, 37, 42), @to_time
+  end
+
+
+  def test_to_time_with_date_base
+    base = Date.new(1990, 11, 10)
     @to_time = @dl_time.to_time(base)
     
     assert_equal Time, @to_time.class

@@ -95,9 +95,13 @@ time.to_i
 time.to_time
 # => 2014-04-01 13:37:42 +0100
 
-# but you can supply a base time object instead
+# but you can supply a base Time object instead
 time.to_time(Time.new(1985, 10, 25, 0, 0, 0, "-08:00"))
 # => 1985-10-25 13:37:42 -0800
+
+# or a base Date
+time.to_time(Date.new(1985, 10, 25))
+# => 1985-10-25 13:37:42 +0100
 
 time.to_time.class
 # => Time
