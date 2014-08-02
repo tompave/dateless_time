@@ -75,7 +75,7 @@ require 'dateless_time'
 time = DatelessTime.new "13:37:42"
 
 time.hours
-tome.hour
+time.hour
 #=> 13
 
 time.minutes
@@ -87,7 +87,6 @@ time.sec
 #=> 42
 
 time.seconds_since_midnight
-# or
 time.to_i
 # => 49062
 
