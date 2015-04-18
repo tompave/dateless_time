@@ -28,9 +28,9 @@ No external gems.
 
 Tested with:
 
-* MRI `1.9.3`, `2.0.`, `2.1` and `2.2.`.
-* Rubinius `2.2.4`
-* JRuby `1.7.10`
+* MRI `>= 1.9.3`
+* Rubinius `>= 2.2`
+* JRuby `>= 1.7`
 
 
 ## How
