@@ -63,6 +63,13 @@ class DatelessTime
     nil
   end
 
+  def to_datetime(base = DateTime.now)
+    args = [base.year, base.month, base.day, @hours, @minutes, @seconds]
+    args << base.utc_offset if base.is_a?(DateTime)
+    @time_value = DateTime.new(*args)
+  rescue
+    nil
+  end
 
   def to_s
     @string_value ||= sprintf(SPRINTF_FORMAT, @hours, @minutes, @seconds)

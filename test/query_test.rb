@@ -1,5 +1,10 @@
 require 'test_helper'
 
+class DateTime
+  def utc_offset  #patch DateTime
+    self.to_time.utc_offset 
+  end
+end
 class QueryTest < Minitest::Test
 
   def setup
@@ -7,6 +12,9 @@ class QueryTest < Minitest::Test
   end
 
 
+=begin
+Test to_time
+=end
 
   def test_to_time_without_base
     @to_time = @dl_time.to_time
@@ -80,6 +88,56 @@ class QueryTest < Minitest::Test
     assert_equal Time.new(1990, 11, 10, 13, 37, 42), @to_time
   end
 
+=begin
+Test to_datetime
+=end
+
+  def test_to_datetime_without_base
+    @to_datetime = @dl_time.to_datetime
+    now = DateTime.now
+    expected = DateTime.new(now.year, now.month, now.day, 13, 37, 42, now.utc_offset)
+
+    assert_equal DateTime, @to_datetime.class
+    assert_equal expected, @to_datetime
+  end
+
+
+  def test_to_datetime_with_time_base
+    base = DateTime.new(1990, 11, 10, 12, 13, 14)
+    @to_datetime = @dl_time.to_datetime(base)
+    
+    assert_equal DateTime, @to_datetime.class
+    assert_equal DateTime.new(1990, 11, 10, 13, 37, 42), @to_datetime
+  end
+
+
+  def test_to_datetime_with_date_base
+    base = Date.new(1990, 11, 10)
+    @to_datetime = @dl_time.to_datetime(base)
+    
+    assert_equal DateTime, @to_datetime.class
+    assert_equal DateTime.new(1990, 11, 10, 13, 37, 42), @to_datetime
+  end
+
+
+  def test_to_datetime_with_different_bases_should_change
+    @to_datetime = @dl_time.to_datetime
+    now = DateTime.now
+    expected = DateTime.new(now.year, now.month, now.day, 13, 37, 42, now.utc_offset)
+
+    assert_equal DateTime, @to_datetime.class
+    assert_equal expected, @to_datetime
+
+
+    base = DateTime.new(1990, 11, 10, 12, 13, 14)
+    @to_datetime = @dl_time.to_datetime(base)
+    
+    assert_equal DateTime, @to_datetime.class
+    assert_equal DateTime.new(1990, 11, 10, 13, 37, 42), @to_datetime
+  end
+
+=begin
+=end
 
 
 
