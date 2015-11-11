@@ -1,6 +1,8 @@
 # DatelessTime Changelog
 
-## on master
+## 1.0.0
+
+The gem graduates from `0.0.x`. The basic functionality is stable and not going to change. The other additions that go into this release are small incremental changes.
 
 #### New Features
 
