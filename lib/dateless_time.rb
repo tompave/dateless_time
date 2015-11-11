@@ -49,6 +49,21 @@ class DatelessTime
   end
 
 
+  def to_datetime(base = DateTime.now)
+    args = [base.year, base.month, base.day, @hours, @minutes, @seconds]
+
+    if base.is_a?(Time)
+      args << sprintf("%+d", (base.utc_offset / 3600))
+    elsif base.is_a?(DateTime)
+      args << sprintf("%+d", (base.offset * 24))
+    end
+
+    DateTime.new(*args)
+  rescue
+    nil
+  end
+
+
   def to_s
     @string_value ||= sprintf(SPRINTF_FORMAT, @hours, @minutes, @seconds)
   rescue

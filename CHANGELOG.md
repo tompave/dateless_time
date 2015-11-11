@@ -6,6 +6,7 @@
 
 * Added a changelog.  
 * The method `#to_time` now also accepts `DateTime` objects as base values, in addition to `Time` and `Date`.  
+* Added `#to_datetime` method, with semantics similar to `#to_time`.
 
 #### Changes
 

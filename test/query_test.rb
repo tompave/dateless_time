@@ -81,6 +81,87 @@ class QueryTest < Minitest::Test
   end
 
 
+
+
+
+
+
+  def test_to_datetime_without_base
+    @to_datetime = @dl_time.to_datetime
+    now = DateTime.now
+    expected = DateTime.new(now.year, now.month, now.day, 13, 37, 42)
+
+    assert_equal DateTime, @to_datetime.class
+    assert_equal expected, @to_datetime
+  end
+
+
+  def test_to_datetime_with_time_base
+    base = Time.new(1990, 11, 10, 12, 13, 14)
+    @to_datetime = @dl_time.to_datetime(base)
+    
+    assert_equal DateTime, @to_datetime.class
+    assert_equal DateTime.new(1990, 11, 10, 13, 37, 42), @to_datetime
+  end
+
+
+  def test_to_datetime_with_time_with_offset_base
+    base = Time.new(1990, 11, 10, 12, 13, 14, '+04:00')
+    @to_datetime = @dl_time.to_datetime(base)
+    
+    assert_equal DateTime, @to_datetime.class
+    assert_equal DateTime.new(1990, 11, 10, 13, 37, 42, '+4'), @to_datetime
+  end
+
+
+  def test_to_datetime_with_date_base
+    base = Date.new(1990, 11, 10)
+    @to_datetime = @dl_time.to_datetime(base)
+    
+    assert_equal DateTime, @to_datetime.class
+    assert_equal DateTime.new(1990, 11, 10, 13, 37, 42), @to_datetime
+  end
+
+
+
+  def test_to_datetime_with_datetime_base
+    base = DateTime.new(1990, 11, 10, 12, 13, 14)
+    @to_datetime = @dl_time.to_datetime(base)
+    
+    assert_equal DateTime, @to_datetime.class
+    assert_equal DateTime.new(1990, 11, 10, 13, 37, 42), @to_datetime
+  end
+
+
+  def test_to_datetime_with_datetime_with_offset_base
+    base = DateTime.new(1990, 11, 10, 12, 13, 14, '+4')
+    @to_datetime = @dl_time.to_datetime(base)
+    
+    assert_equal DateTime, @to_datetime.class
+    assert_equal DateTime.new(1990, 11, 10, 13, 37, 42, '+4'), @to_datetime
+  end
+
+
+  def test_to_datetime_with_different_bases_should_change
+    @to_datetime = @dl_time.to_datetime
+    now = Time.now
+    expected = DateTime.new(now.year, now.month, now.day, 13, 37, 42)
+
+    assert_equal DateTime, @to_datetime.class
+    assert_equal expected, @to_datetime
+
+
+    base = Time.new(1990, 11, 10, 12, 13, 14)
+    @to_datetime = @dl_time.to_datetime(base)
+    
+    assert_equal DateTime, @to_datetime.class
+    assert_equal DateTime.new(1990, 11, 10, 13, 37, 42), @to_datetime
+  end
+
+
+
+
+
   def test_to_s
     assert_equal "13:37:42", @dl_time.to_s
   end

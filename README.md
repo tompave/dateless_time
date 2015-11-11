@@ -105,6 +105,14 @@ time.to_time(Date.new(1985, 10, 25))
 time.to_time.class
 # => Time
 
+# this uses DateTime.now to fill the date-related bits
+time.to_datetime
+# => #<DateTime: 2015-11-11T13:37:42+00:00 ((2457338j,49062s,0n),+0s,2299161j)>
+
+# but here, too, you can supply a base object instead (Date, Time or DateTime)
+time.to_datetime(Date.new(1985, 10, 25))
+# => #<DateTime: 1985-10-25T13:37:42+00:00 ((2446364j,49062s,0n),+0s,2299161j)>
+
 time.strftime("%-l:%M %P")
 # => "1:37 pm"
 
