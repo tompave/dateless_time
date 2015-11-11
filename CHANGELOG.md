@@ -4,7 +4,8 @@
 
 #### New Features
 
-* Added a changelog
+* Added a changelog.  
+* The method `#to_time` now also accepts `DateTime` objects as base values, in addition to `Time` and `Date`.  
 
 #### Changes
 

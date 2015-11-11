@@ -45,6 +45,25 @@ class QueryTest < Minitest::Test
   end
 
 
+
+  def test_to_time_with_datetime_base
+    base = DateTime.new(1990, 11, 10, 12, 13, 14)
+    @to_time = @dl_time.to_time(base)
+    
+    assert_equal Time, @to_time.class
+    assert_equal Time.new(1990, 11, 10, 13, 37, 42), @to_time
+  end
+
+
+  def test_to_time_with_datetime_with_offset_base
+    base = DateTime.new(1990, 11, 10, 12, 13, 14, '+4')
+    @to_time = @dl_time.to_time(base)
+    
+    assert_equal Time, @to_time.class
+    assert_equal Time.new(1990, 11, 10, 13, 37, 42, '+04:00'), @to_time
+  end
+
+
   def test_to_time_with_different_bases_should_change
     @to_time = @dl_time.to_time
     now = Time.now

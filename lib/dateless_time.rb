@@ -36,7 +36,13 @@ class DatelessTime
 
   def to_time(base = Time.now)
     args = [base.year, base.month, base.day, @hours, @minutes, @seconds]
-    args << base.utc_offset if base.is_a?(Time)
+
+    if base.is_a?(Time)
+      args << base.utc_offset
+    elsif base.is_a?(DateTime)
+      args << (base.offset * SECONDS_IN_24_HOURS)
+    end
+
     Time.new(*args)
   rescue
     nil

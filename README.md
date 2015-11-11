@@ -98,7 +98,7 @@ time.to_time
 time.to_time(Time.new(1985, 10, 25, 0, 0, 0, "-08:00"))
 # => 1985-10-25 13:37:42 -0800
 
-# or a base Date
+# or a base Date or DateTime
 time.to_time(Date.new(1985, 10, 25))
 # => 1985-10-25 13:37:42 +0100
 
