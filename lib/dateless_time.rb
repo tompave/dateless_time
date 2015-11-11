@@ -52,11 +52,15 @@ class DatelessTime
   def to_datetime(base = DateTime.now)
     args = [base.year, base.month, base.day, @hours, @minutes, @seconds]
 
-    if base.is_a?(Time)
-      args << sprintf("%+d", (base.utc_offset / 3600))
-    elsif base.is_a?(DateTime)
-      args << sprintf("%+d", (base.offset * 24))
+    normalized_offset = begin
+      if base.is_a?(DateTime)
+        base.offset * 24
+      elsif base.is_a?(Time)
+        base.utc_offset / 3600
+      end
     end
+
+    normalized_offset && args << sprintf("%+d", normalized_offset)
 
     DateTime.new(*args)
   rescue
