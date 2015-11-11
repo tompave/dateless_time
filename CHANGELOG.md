@@ -1,7 +1,14 @@
 # DatelessTime Changelog
 
 ## on master
-readme changes
+
+#### New Features
+
+* Added a changelog
+
+#### Changes
+
+* Small internal improvements.
 
 ## 0.0.4
 #### New Features
