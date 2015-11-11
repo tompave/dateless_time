@@ -196,6 +196,7 @@ end
 
 1. implement the `+` and `-` artimetic operators, in a way consistent with Ruby's `Time`
 2. nice to have: other methods from `Time`'s public interface
+3. using `DateTime` objects as base for `#to_time` and `#to_datetime` does not support fractional utc offsets (e.g. Australia)
 
 
 
