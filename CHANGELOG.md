@@ -17,7 +17,7 @@ The gem graduates from `0.0.x`. The basic functionality is stable and not going 
 ## 0.0.4
 #### New Features
 
-* Added methos aliases for `hour`, `min` and `sec`, to make the interface more consistent with the default `Time` class.  
+* Added method aliases for `hour`, `min` and `sec`, to make the interface more consistent with the default `Time` class.  
 * The method `#to_time` now also accepts `Date` objects as base values, in addition to `Time` objects.
 
 ## 0.0.3
@@ -43,7 +43,7 @@ The gem graduates from `0.0.x`. The basic functionality is stable and not going 
 
 #### Bug Fixes
 
-* The return value of `#to_time` was memoized, this made it impossible to use it moltiple times with different base values.
+* The return value of `#to_time` was memoized, this made it impossible to use it multiple times with different base values.
 
 ## 0.0.1
 
