@@ -32,7 +32,7 @@ No external gems.
 Tested with:
 
 * MRI `>= 1.9.3`
-* Rubinius `>= 2.2`
+* Rubinius `>= 2.2` is supported, but the tests will fail on travis.
 * JRuby `>= 1.7`
 
 
