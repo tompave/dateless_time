@@ -89,7 +89,7 @@ class QueryTest < Minitest::Test
   def test_to_datetime_without_base
     @to_datetime = @dl_time.to_datetime
     now = DateTime.now
-    expected = DateTime.new(now.year, now.month, now.day, 13, 37, 42)
+    expected = DateTime.new(now.year, now.month, now.day, 13, 37, 42, now.offset)
 
     assert_equal DateTime, @to_datetime.class
     assert_equal expected, @to_datetime
@@ -145,7 +145,8 @@ class QueryTest < Minitest::Test
   def test_to_datetime_with_different_bases_should_change
     @to_datetime = @dl_time.to_datetime
     now = Time.now
-    expected = DateTime.new(now.year, now.month, now.day, 13, 37, 42)
+    offset = sprintf("%+d", (now.utc_offset / 3600))
+    expected = DateTime.new(now.year, now.month, now.day, 13, 37, 42, offset)
 
     assert_equal DateTime, @to_datetime.class
     assert_equal expected, @to_datetime
