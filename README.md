@@ -1,5 +1,8 @@
 # DatelessTime
 
+[![Build Status](https://travis-ci.org/tompave/dateless_time.svg?branch=master)](https://travis-ci.org/tompave/dateless_time) [![Gem Version](https://badge.fury.io/rb/dateless_time.svg)](https://badge.fury.io/rb/dateless_time)
+
+
 A class to handle __dateless time values__.  
 
 ## What
