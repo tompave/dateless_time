@@ -2,5 +2,5 @@ language: ruby
 rvm:
   - "2.2"
   - "jruby"
-  - "rbx-2"
+  - "rbx-2.10"
 script: "rake test"
