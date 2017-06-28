@@ -105,6 +105,28 @@ class DatelessTime
   end
 
 
+  def -(other)
+    # other.class.is_a? Numeric (seconds)
+    # return type is DatelessTime
+    #
+    # other.class.is_a? DatelessTime
+    # return type is Numeric
+    if other.is_a? Numeric
+      DatelessTime.new(calculate_seconds_since_midnight - other)
+    elsif other.is_a? DatelessTime
+      Float.new((calculate_seconds_since_midnight - other.calculate_seconds_since_midnight)).abs
+    else
+      raise TypeError
+    end
+  end
+
+
+  def +(other)
+    # Can only add numerics (in seconds) to time.
+    raise TypeError if other.is_a?(DatelessTime)
+    DatelessTime.new(calculate_seconds_since_midnight + other)
+  end
+
 
 private
 
