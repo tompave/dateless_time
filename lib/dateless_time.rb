@@ -114,7 +114,8 @@ class DatelessTime
     if other.is_a? Numeric
       DatelessTime.new(calculate_seconds_since_midnight - other)
     elsif other.is_a? DatelessTime
-      Float.new((calculate_seconds_since_midnight - other.calculate_seconds_since_midnight)).abs
+      otherSeconds = (other.hour * 60 * 60) + (other.min * 60) + other.sec
+      (calculate_seconds_since_midnight - otherSeconds).abs
     else
       raise TypeError
     end
