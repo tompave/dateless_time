@@ -125,10 +125,10 @@ class ComparableTest < Minitest::Test
     @t3 = DatelessTime.new "0"
     @correct_time = DatelessTime.new "9:30:00"
 
-    assert_equal @correct_time, @t1+3600
-    assert_equal @correct_time, @t2+900
-    assert_equal @correct_time, @t3+((60*60*9)+(60*30))
-    refute_equal @t1, @t2+(4500)
+    assert_equal @correct_time, @t1 + 3600
+    assert_equal @correct_time, @t2 + 900
+    assert_equal @correct_time, @t3 + ((60 * 60 * 9)+(60 * 30))
+    refute_equal @t1, @t2 + 4500
   end
 
 
@@ -137,12 +137,12 @@ class ComparableTest < Minitest::Test
     @t2 = DatelessTime.new "9:15:00"
     @t3 = DatelessTime.new "0"
 
-    assert_equal DatelessTime.new([2]), @t1-23400
-    assert_equal @t3, @t2-33300
-    refute_equal @t1, @t2-t1
+    assert_equal DatelessTime.new([2]), @t1 - 23400
+    assert_equal @t3, @t2 - 33300
+    refute_equal @t1, @t2 - 0
 
-    assert_equal (45*60), @t2-@t1
-    assert_equal @t1, @t3-@t1
+    assert_equal (45 * 60), @t2 - @t1
+    assert_equal (8 * 60 * 60) + (30 * 60), @t3 - @t1
   end
 
 end
