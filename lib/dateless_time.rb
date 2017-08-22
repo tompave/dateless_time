@@ -100,10 +100,32 @@ class DatelessTime
 
 
   def <=>(other)
-    raise TypeError unless other.is_a?(DatelessTime)
+    raise TypeError unless other.is_a? DatelessTime
     to_i <=> other.to_i
   end
 
+
+  def -(other)
+    if other.is_a? Integer
+      # Return DatelessTime object
+      raise DatelessTime::TimeOutOfRangeError if other > to_i # Would be negative
+      DatelessTime.new(to_i - other)
+    elsif other.is_a? DatelessTime
+      # Return Integer
+      raise DatelessTime::TimeOutOfRangeError if other > self
+      to_i - other.to_i
+    else
+      raise TypeError
+    end
+  end
+
+
+  def +(other)
+    # Can only add numerics (in seconds) to time.
+    raise TypeError unless other.is_a? Integer
+    raise DatelessTime::TimeOutOfRangeError if (seconds_since_midnight.to_i + other) > SECONDS_IN_24_HOURS
+    DatelessTime.new(seconds_since_midnight.to_i + other)
+  end
 
 
 private
